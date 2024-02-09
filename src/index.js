@@ -616,12 +616,14 @@ export default class CanvasDraw extends PureComponent {
 
   loop = ({ once = false } = {}) => {
     if (this.mouseHasMoved || this.valuesChanged) {
-      const pointer = this.lazy.getPointerCoordinates();
-      const brush = this.lazy.getBrushCoordinates();
+      if (_this.lazy != undefined) {
+        const pointer = this.lazy.getPointerCoordinates();
+        const brush = this.lazy.getBrushCoordinates();
 
-      this.drawInterface(this.ctx.interface, pointer, brush);
-      this.mouseHasMoved = false;
-      this.valuesChanged = false;
+        this.drawInterface(this.ctx.interface, pointer, brush);
+        this.mouseHasMoved = false;
+        this.valuesChanged = false;
+      }
     }
 
     if (!once) {
